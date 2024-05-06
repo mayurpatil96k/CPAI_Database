@@ -68,3 +68,61 @@ SELECT Student.admission_no, Student.first_name, Student.last_name, Fee.course, 
 FROM Student  
 CROSS JOIN Fee  
 WHERE Student.admission_no = Fee.admission_no;  
+
+--LEFT OUTER JOIN
+SELECT Student.admission_no, Student.first_name, Student.last_name, Fee.course, Fee.amount_paid  
+FROM Student  
+LEFT OUTER JOIN Fee  
+ON Student.admission_no = Fee.admission_no;  
+
+--RIGHT OUTER JOIN
+SELECT Student.admission_no, Student.first_name, Student.last_name, Fee.course, Fee.amount_paid  
+FROM Student  
+RIGHT OUTER JOIN Fee  
+ON Student.admission_no = Fee.admission_no;  
+
+--FULL OUTER JOIN
+SELECT Student.admission_no, Student.first_name, Student.last_name, Fee.course, Fee.amount_paid  
+FROM Student  
+FULL OUTER JOIN Fee  
+ON Student.admission_no = Fee.admission_no; 
+
+--CONTRAINTS
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT
+);
+
+
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    OrderDate DATE,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
+
+
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    Email VARCHAR(100) UNIQUE,
+    Name VARCHAR(50),
+    ...
+);
+
+
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT,
+    CONSTRAINT CHK_Age CHECK (Age >= 18)
+);
+
+
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Gender CHAR(1) DEFAULT 'M'
+);
+
+
